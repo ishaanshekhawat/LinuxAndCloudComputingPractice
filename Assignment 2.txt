@@ -1,0 +1,43 @@
+// Create a file and use `chmod` to set it to `rwx`.
+
+touch file1.txt
+chmod a=rwx file1.txt                  # Gives read, write, and execute permissions to all users (owner, group, others).
+
+// Create another file and change its owner using `chown`.
+
+touch file2.txt
+sudo chown ishaan:ishaan ~/folder1/folder2/file2.txt         # Changes the owner and group of the file to ishaan
+
+// Create a group and assign file access using `chgrp`.
+
+sudo groupadd grp1                     # Creates a new group
+cat /etc/group | sort                  # Displays the contents of the /etc/group file and arranges the group names alphabetically.
+sudo chgrp grp1 ~/folder1/folder2/file2.txt        # Changes the group ownership of file2.txt to grp1.
+
+// Write a shell script to print your name, roll number, and today’s date.
+
+#!/bin/bash
+
+read -p "enter name: " name            # Take the input for name
+read -p "enter roll no.: " rollno      # Take the input for roll no.
+currdate=$(date +%Y-%m-%d)             # Get the current date in YYYY-MM-DD format
+
+echo "Your name is $name."             # Prints the value of name
+echo "your roll number is $rollno."    # Prints the value of roll no
+echo "Today is: $currdate."            # Prints today's date
+
+// Write a script to check whether a file exists and is readable.
+
+#!/bin/bash
+
+read -p "Enter the filename to check: " filename       # Take the input for file's name
+
+result=$(find . -type f -name "$filename" -perm -u=r)      # Search in the current directory for a regular file with the exact name $filename that is readable by the user.
+
+# If the result variable is non-empty, then it means a matching file was found.
+
+if [ -n "$result" ]; then
+    echo "File '$filename' exists and is readable."
+else
+    echo "File '$filename' either doesn't exist or is not readable."
+fi
