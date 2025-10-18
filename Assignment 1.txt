@@ -37,11 +37,9 @@ more file1              # Displays one screen at a time
 
 //  Write a small C program and compile it using a `Makefile`.
 
-sudo apt install build-essential
-sudo apt install make
-sudo apt install gcc
+sudo apt install build-essential            # Installs essential packages including gcc and make.
 
-nano hello.c
+nano hello.c                                # Created the C program
 
 <----------Inside hello.c--------------->
 #include <stdio.h>
@@ -52,12 +50,17 @@ int main() {
 }
 <----------Inside hello.c--------------->
 
-nano makefile
+nano makefile                               # Created the makefile
 
 <----------Inside makefile--------------->
 code: hello.c
     gcc -o code hello.c
 <----------Inside makefile--------------->
 
-make
-./code
+make                                        # Runs the makefile
+./code                                      # Executes the compiled program
+
+
+// Redirect the output of `ls -l` to a file and append the date to it.
+
+ls -l > file1.txt | date >> file1.txt
