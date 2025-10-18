@@ -1,0 +1,54 @@
+// Write a script to calculate factorial of a number using `while` loop.
+
+#!/bin/bash
+
+read -p "ENTER a num: " no
+temp=1          # To store the running factorial result
+count=1         # To act as a loop counter
+
+# Loops from 1 to the entered number, multiplying temp by count each time. Increments count until it exceeds the input. Prints the final factorial result.
+
+while [ $count -le $no ]
+do
+   temp=$(($count * $temp))
+   ((count++))
+done
+echo "$temp"
+
+
+// Write a script to count lines, words, and characters in a file.
+
+#!/bin/bash
+
+read -p "Enter a file: " filename
+
+check=$(wc $filename)  
+echo "$check"
+
+
+// Write a script to display a menu (date, calendar, list files, exit) and execute the chosen option.
+
+#!/bin/bash
+
+echo "Menu Options: 1 is for date, 2 is for calendar, 3 is for listing files, 4 is to exit."
+
+read -p "Enter an option: " option
+
+case $option in
+        1)
+                date
+        ;;
+        2)
+                cal
+        ;;
+        3)
+                ls
+        ;;
+        4)
+                exit
+        ;;
+        *)
+                echo "wrong option"
+        ;;
+
+esac
