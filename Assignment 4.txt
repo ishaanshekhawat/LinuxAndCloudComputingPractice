@@ -1,0 +1,56 @@
+// Write a shell script that accepts a file name as an argument and display whether it is a directory, a regular file, or something else.
+
+#!/bin/bash
+read -p "Enter a filename: " thingname
+
+result1=$(find -type f -name "$thingname")        # Look for a regular file with that name.
+result2=$(find -type d -name "$thingname")        # Look for a directory with that name.
+
+# If a file is found, it prints “this is a file.” If a directory is found, it prints “this is a directory.” If neither is found, it prints “this is something else.”
+
+if [ -n "$result1" ]
+then 
+        echo "this is a file"
+elif [ -n "$result2" ]
+then 
+        echo "this is a directory"
+else
+        echo "this is something else"
+fi
+
+
+// Write a script that demonstrates use of functions by creating one for addition and one for subtraction.
+
+#!/bin/bash
+
+read -p "Enter 1 for addition, and 2 for subtraction, and 3 for multiplication: " num
+read -p "Enter 1st number: " num1
+read -p "Enter 2nd number: " num2
+
+addition(){
+        add=$(($num1 + $num2))
+        echo "sum is $add"
+
+}
+
+subtraction(){
+        sub=$(($num1 - $num2))
+        echo "diff is $sub"
+}
+
+multiplication(){
+        mul=$(($num1 * $num2))
+        echo "mul is $mul"
+}
+
+if [ "$num" -eq 1 ]
+then
+    addition num1 num2
+elif [ "$num" -eq 2 ]
+then
+    subtraction num1 num2
+else
+    multiplication num1 num2
+fi
+
+
