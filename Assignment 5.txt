@@ -1,0 +1,43 @@
+// Create a local repository, add a file, and commit changes.
+
+mkdir new_local_repo
+cd new_local_repo
+
+echo "print(hello)" > hello.py
+
+git init
+git add .
+git commit -m "Initial commit"
+
+
+// Create a new branch, switch to it, make changes, and merge it with `main`.
+
+git clone https://github.com/ishaanshekhawat/new_repo.git
+cd new_repo
+nano hello.py                         # Writing initial code
+
+git add .
+git commit -m "first commit"          # Stages all changes and commits them with the message "first commit".
+git branch                            # Lists all local branches.
+
+git checkout -b branch-1              # Creates a new branch named branch-1 and switches to it.
+nano hello.py                         # Makes further edits to hello.py.
+git add .
+git commit -m "second commit"         # Stages and commits the changes on branch-1.
+
+git switch main                       # Switches back to the main branch.
+
+git merge branch-1                    # Merges the changes from branch-1 into main.
+
+
+// Clone a repository from GitHub, edit files, and push changes back.
+
+git clone https://github.com/ishaanshekhawat/new_repo2.git
+
+cd new_repo2
+nano hello.py
+git add .
+
+git commit -m "New Update"
+
+git push origin main
